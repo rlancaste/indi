@@ -371,7 +371,7 @@ target_link_libraries(indi_tcfs_focus indidriver)
 install(TARGETS indi_tcfs_focus RUNTIME DESTINATION bin)
 
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/make_tcfs_symlink.cmake
-    "exec_program(\"${CMAKE_COMMAND}\" ARGS -E create_symlink indi_tcfs_focus \$ENV{DESTDIR}${BIN_INSTALL_DIR}/indi_tcfs3_focus)\n")
+	"execute_process(COMMAND \"${CMAKE_COMMAND}\" -E create_symlink indi_tcfs_focus \$ENV{DESTDIR}${BIN_INSTALL_DIR}/indi_tcfs3_focus)\n")
 set_target_properties(indi_tcfs_focus PROPERTIES POST_INSTALL_SCRIPT ${CMAKE_CURRENT_BINARY_DIR}/make_tcfs_symlink.cmake)
 
 # ############### Lacerta MFOC Focuser ################
@@ -400,3 +400,10 @@ add_executable(indi_activefocuser_focus ${activefocuser_SRC})
 
 target_link_libraries(indi_activefocuser_focus indidriver ${HIDAPILIB})
 install(TARGETS indi_activefocuser_focus RUNTIME DESTINATION bin)
+# ############### Alpaca Focuser ################
+SET(alpaca_focuser_SRC
+    indi_alpaca_focuser.cpp)
+
+add_executable(indi_alpaca_focuser ${alpaca_focuser_SRC})
+target_link_libraries(indi_alpaca_focuser indidriver)
+install(TARGETS indi_alpaca_focuser RUNTIME DESTINATION bin)

@@ -351,13 +351,32 @@ bool PegasusPPBA::ISNewSwitch(const char * dev, const char * name, ISState * sta
                 case ADJOUT_12V:
                     adjv = 12;
                     break;
+                default:
+                    AdjOutVoltSP.setState(IPS_ALERT);
+                    AdjOutVoltSP.apply();
+                    LOGF_ERROR("Unexpected voltage level: %d", target_index);
+                    return true;
             }
 
             AdjOutVoltSP.setState(IPS_ALERT);
             char cmd[PEGASUS_LEN] = {0}, res[PEGASUS_LEN] = {0};
+            // if switching from off to some voltage, we first need to turn on the port
+            if (previous_index == ADJOUT_OFF)
+            {
+                snprintf(cmd, PEGASUS_LEN, "P2:%d", 1);
+                if (!sendCommand(cmd, res))
+                {
+                    AdjOutVoltSP.reset();
+                    AdjOutVoltSP[previous_index].setState(ISS_ON);
+                    AdjOutVoltSP.setState(IPS_ALERT);
+                    AdjOutVoltSP.apply();
+                    return true;
+                }
+            }
             snprintf(cmd, PEGASUS_LEN, "P2:%d", adjv);
             if (sendCommand(cmd, res))
             {
+                AdjOutVoltSP[target_index].setState(ISS_ON);
                 AdjOutVoltSP.setState(IPS_OK);
                 saveConfig(AdjOutVoltSP);
             }
@@ -369,6 +388,7 @@ bool PegasusPPBA::ISNewSwitch(const char * dev, const char * name, ISState * sta
             }
 
             AdjOutVoltSP.apply();
+            LOGF_INFO("New adj. voltage: %dV", adjv);
             return true;
         }
 
@@ -704,7 +724,7 @@ bool PegasusPPBA::getSensorData()
         }
         // Adjustable Power Status
         AdjOutVoltSP.reset();
-        if (std::stoi(result[PA_ADJ_STATUS]) == 0)
+        if (std::stoi(result[PA_PWRADJ]) == 0)
             AdjOutVoltSP[ADJOUT_OFF].setState(ISS_ON);
         else
         {
@@ -840,7 +860,7 @@ bool PegasusPPBA::getMetricsData()
         if (PI::PowerChannelCurrentNP.size() > 0)
         {
             PI::PowerChannelCurrentNP[0].setValue(std::stod(result[PC_12V_CURRENT]));
-            if (lastMetricsData[PC_12V_CURRENT] != result[PC_12V_CURRENT])
+            if (lastMetricsData.size() < PC_N || lastMetricsData[PC_12V_CURRENT] != result[PC_12V_CURRENT])
             {
                 PI::PowerChannelCurrentNP.setState(IPS_OK);
                 PI::PowerChannelCurrentNP.apply();
@@ -852,8 +872,7 @@ bool PegasusPPBA::getMetricsData()
         if (PI::DewChannelCurrentNP.size() > 1)
             PI::DewChannelCurrentNP[1].setValue(std::stod(result[PC_DEWB_CURRENT]));
         if (lastMetricsData.size() < PC_N ||
-                lastMetricsData[PC_TOTAL_CURRENT] != result[PC_TOTAL_CURRENT]
-                || // Total current is not directly mapped to PI properties, but we keep it for change detection
+                lastMetricsData[PC_TOTAL_CURRENT] != result[PC_TOTAL_CURRENT] ||
                 lastMetricsData[PC_DEWA_CURRENT] != result[PC_DEWA_CURRENT] ||
                 lastMetricsData[PC_DEWB_CURRENT] != result[PC_DEWB_CURRENT])
         {

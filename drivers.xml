@@ -7,6 +7,10 @@
         </device>
     </devGroup>
     <devGroup group="Telescopes">
+        <device label="Alpaca Telescope" manufacturer="Alpaca">
+            <driver name="Alpaca Telescope">indi_alpaca_telescope</driver>
+            <version>1.0</version>
+        </device>
         <device label="Shelyak Usis" manufacturer="Shelyak">
             <driver name="Shelyak Usis">shelyak_usis</driver>
             <version>1.2</version>
@@ -33,31 +37,35 @@
         </device>
         <device label="LX200 OnStep" manufacturer="OnStep">
             <driver name="LX200 OnStep">indi_lx200_OnStep</driver>
-            <version>1.24</version>
+            <version>1.26</version>
         </device>
         <device label="WARPDRIVE" manufacturer="WarpAstron">
             <driver name="LX200 OnStep">indi_lx200_OnStep</driver>
-            <version>1.24</version>
+            <version>1.26</version>
         </device>
         <device label="UMi" manufacturer="ProxiSky">
             <driver name="LX200 OnStep">indi_lx200_OnStep</driver>
-            <version>1.24</version>
+            <version>1.26</version>
         </device>
         <device label="EM31Pro" manufacturer="Emcan Astro">
             <driver name="LX200 OnStep">indi_lx200_OnStep</driver>
-            <version>1.24</version>
+            <version>1.26</version>
         </device>
         <device label="Juwei 14" manufacturer="Juwei">
             <driver name="LX200 OnStep">indi_lx200_OnStep</driver>
-            <version>1.24</version>
+            <version>1.26</version>
         </device>
         <device label="Juwei 17" manufacturer="Juwei">
             <driver name="LX200 OnStep">indi_lx200_OnStep</driver>
-            <version>1.24</version>
+            <version>1.26</version>
+        </device>
+        <device label="SAL-33" manufacturer="MLAstro">
+            <driver name="LX200 OnStep">indi_lx200_OnStep</driver>
+            <version>1.26</version>
         </device>
         <device label="LX200 OpenAstroTech" manufacturer="OpenAstroTech">
             <driver name="LX200 OpenAstroTech">indi_lx200_OpenAstroTech</driver>
-            <version>0.9</version>
+            <version>0.10</version>
         </device>
         <device label="LX200 TeenAstro" manufacturer="TeenAstro">
             <driver name="LX200 TeenAstro">indi_lx200_TeenAstro</driver>
@@ -399,7 +407,7 @@
         </device>
         <device label="Pegasus FalconV2" manufacturer="Pegasus Astro">
             <driver name="Pegasus FalconV2">indi_falconv2_rotator</driver>
-            <version>1.0</version>
+            <version>1.1</version>
         </device>
         <device label="Rotator Simulator" manufacturer="Simulator">
             <driver name="Rotator Simulator">indi_simulator_rotator</driver>
@@ -427,6 +435,10 @@
         </device>
     </devGroup>
     <devGroup group="Focusers">
+        <device label="Alpaca Focuser" manufacturer="Alpaca">
+            <driver name="Alpaca Focuser">indi_alpaca_focuser</driver>
+            <version>1.0</version>
+        </device>
         <device label="Focuser Simulator" manufacturer="Simulator">
             <driver name="Focuser Simulator">indi_simulator_focus</driver>
             <version>1.0</version>
@@ -549,7 +561,7 @@
         </device>
         <device label="Baader SteelDrive" manufacturer="Baader">
             <driver name="Baader SteelDrive">indi_steeldrive_focus</driver>
-            <version>1.0</version>
+            <version>1.1</version>
         </device>
         <device label="Baader SteelDriveII" manufacturer="Baader">
             <driver name="Baader SteelDriveII">indi_steeldrive2_focus</driver>
@@ -577,19 +589,19 @@
         </device>
         <device label="Sesto Senso 2" manufacturer="Primaluce Lab">
             <driver name="Sesto Senso 2">indi_sestosenso2_focus</driver>
-            <version>1.0</version>
+            <version>1.2</version>
         </device>
         <device label="Sesto Senso 3" manufacturer="Primaluce Lab">
             <driver name="Sesto Senso 2">indi_sestosenso2_focus</driver>
-            <version>1.0</version>
+            <version>1.2</version>
         </device>
         <device label="Sesto Senso 3 SC" manufacturer="Primaluce Lab">
             <driver name="Sesto Senso 2">indi_sestosenso2_focus</driver>
-            <version>1.0</version>
+            <version>1.2</version>
         </device>
         <device label="Sesto Senso 3 LS" manufacturer="Primaluce Lab">
             <driver name="Sesto Senso 2">indi_sestosenso2_focus</driver>
-            <version>1.0</version>
+            <version>1.2</version>
         </device>
         <device label="Esatto" manufacturer="Primaluce Lab">
             <driver name="Esatto">indi_esatto_focus</driver>
@@ -657,6 +669,10 @@
             <driver name="Alpaca Camera">indi_alpaca_ccd</driver>
             <version>1.0</version>
         </device>
+        <device label="Seestar CCD" manufacturer="ZWO">
+            <driver name="Seestar CCD">indi_seestar_ccd</driver>
+            <version>1.0</version>
+        </device>
         <device label="DMK CCD" manufacturer="DMK">
             <driver name="V4L2 CCD">indi_v4l2_ccd</driver>
             <version>1.0</version>
@@ -713,6 +729,10 @@
         </device>
     </devGroup>
     <devGroup group="Filter Wheels">
+        <device label="Alpaca FilterWheel" manufacturer="Alpaca">
+            <driver name="Alpaca FilterWheel">indi_alpaca_filterwheel</driver>
+            <version>1.0</version>
+        </device>
         <device label="XAGYL Wheel" manufacturer="XAGYL">
             <driver name="XAGYL Wheel">indi_xagyl_wheel</driver>
             <version>0.3</version>
@@ -831,6 +851,14 @@
             <driver name="Dust Cover Simulator">indi_simulator_dustcover</driver>
             <version>1.0</version>
         </device>
+        <device label="Alignment Correction Simulator" manufacturer="Simulator">
+            <driver name="Alignment Correction Simulator">indi_simulator_pac</driver>
+            <version>1.0</version>
+        </device>
+        <device label="Avalon UPAS" manufacturer="Avalon Instruments">
+            <driver name="Avalon UPAS">indi_avalon_upas</driver>
+            <version>1.0</version>
+        </device>
         <device label="Arduino ST4" manufacturer="DIY">
             <driver name="Arduino ST4">indi_arduinost4</driver>
             <version>1.0</version>
@@ -906,6 +934,10 @@
         <device label="NUT UPS Safety" manufacturer="NUT UPS Safety">
             <driver name="UPS">indi_ups_safety</driver>
             <version>1.0</version>
+        </device>
+        <device label="StarTech 7-Ports Managed USB Hub" manufacturer="StarTech">
+            <driver name="StarTech 7-Ports Managed USB Hub">indi_startech_hub</driver>
+        <version>1.0</version>
         </device>
     </devGroup>
     <devGroup group="Domes">
@@ -1029,11 +1061,11 @@
         </device>
         <device label="Terrans PowerBoxPro V2" manufacturer="Terrans Industry">
             <driver name="Terrans PowerBoxPro V2">indi_terrans_powerboxpro_v2</driver>
-            <version>1.0</version>
+            <version>1.1</version>
         </device>
         <device label="Terrans PowerBoxGo V2" manufacturer="Terrans Industry">
             <driver name="Terrans PowerBoxGo V2">indi_terrans_powerboxgo_v2</driver>
-            <version>1.0</version>
+            <version>1.1</version>
         </device>
         <device label="Pegasus PPB" manufacturer="Pegasus Astro">
             <driver name="Pegasus PPB">indi_pegasus_ppb</driver>
@@ -1050,6 +1082,10 @@
         <device label="Pegasus UPB" manufacturer="Pegasus Astro">
             <driver name="Pegasus UPB">indi_pegasus_upb</driver>
             <version>1.6</version>
+        </device>
+        <device label="Pegasus UPB3" manufacturer="Pegasus Astro">
+            <driver name="Pegasus UPB3">indi_pegasus_upb3</driver>
+            <version>1.0</version>
         </device>
         <device label="Pegasus UCH" manufacturer="Pegasus Astro">
             <driver name="Pegasus UCH">indi_pegasus_uch</driver>

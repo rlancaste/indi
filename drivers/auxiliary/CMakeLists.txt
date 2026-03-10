@@ -143,6 +143,22 @@ add_executable(indi_simulator_dustcover ${dustcoversimulator_SRC})
 target_link_libraries(indi_simulator_dustcover indidriver)
 install(TARGETS indi_simulator_dustcover RUNTIME DESTINATION bin)
 
+# ########## PAC Simulator (Polar Alignment Correction) ###############
+SET(pacsimulator_SRC
+    pac_simulator.cpp)
+
+add_executable(indi_simulator_pac ${pacsimulator_SRC})
+target_link_libraries(indi_simulator_pac indidriver)
+install(TARGETS indi_simulator_pac RUNTIME DESTINATION bin)
+
+# ########## Avalon UPAS (Universal Polar Alignment System) ###############
+SET(avalon_upas_SRC
+    avalon_upas.cpp)
+
+add_executable(indi_avalon_upas ${avalon_upas_SRC})
+target_link_libraries(indi_avalon_upas indidriver)
+install(TARGETS indi_avalon_upas RUNTIME DESTINATION bin)
+
 
 # ########## RB Focus Excalibur ###############
 SET(Excalibur_SRC
@@ -314,3 +330,19 @@ SET(gemini_flatpanel_SRC
 add_executable(indi_gemini_flatpanel ${gemini_flatpanel_SRC})
 target_link_libraries(indi_gemini_flatpanel indidriver)
 install(TARGETS indi_gemini_flatpanel RUNTIME DESTINATION bin)
+
+# ########## Pegasus Flatmaster ###############
+SET(pegasus_flatmaster_SRC
+    pegasus_flatmaster.cpp)
+
+add_executable(indi_pegasus_flatmaster ${pegasus_flatmaster_SRC})
+target_link_libraries(indi_pegasus_flatmaster indidriver)
+install(TARGETS indi_pegasus_flatmaster RUNTIME DESTINATION bin)
+
+# ########## StarTech 7-Port Managed USB Hub ###############
+SET(startech_hub_SRC
+    startech_hub.cpp)
+
+add_executable(indi_startech_hub ${startech_hub_SRC})
+target_link_libraries(indi_startech_hub indidriver)
+install(TARGETS indi_startech_hub RUNTIME DESTINATION bin)
